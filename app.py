@@ -1,3 +1,4 @@
+# Import necessary dependencies
 import numpy as np
 import datetime as dt
 import sqlalchemy
@@ -11,29 +12,31 @@ from flask import Flask, jsonify
 #################################################
 
 # create engine to hawaii.sqlite
-engine = create_engine("sqlite:///../Resources/hawaii.sqlite")
+engine = create_engine("sqlite:///Resources/hawaii.sqlite")
+
 
 # reflect an existing database into a new model
-
 Base = automap_base()
+Base.prepare(engine, reflect=True)
 
 # reflect the tables
-
-Base.prepare(autoload_with=engine)
+Measurement = Base.classes.measurement
+Station = Base.classes.station
 
 # Save references to each table
-
-Station = Base.classes.station
 Measurement = Base.classes.measurement
+Station = Base.classes.station
+
 
 # Create our session (link) from Python to the DB
-
 session = Session(engine)
+
 
 #################################################
 # Flask Setup
 #################################################
 
+# Create a Flask app
 app = Flask(__name__)
 
 
@@ -42,8 +45,6 @@ app = Flask(__name__)
 #################################################
 
 # Find the most recent date in the data set.
-
-
 #1. '/'
 #   - Start at the homepage.
 #   - List all the available routes.
@@ -107,8 +108,6 @@ def stations():
         stations.append(station_dict)
 
     return jsonify(stations)
-
-
 
 
 #4. /api/v1.0/tobs
@@ -178,12 +177,6 @@ def get_temps_start_end(start, end):
         temps.append(temps_dict)
 
     return jsonify(temps)
-
-
-
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
