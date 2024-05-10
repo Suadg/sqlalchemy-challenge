@@ -1,0 +1,1 @@
+Welcome to the Hawaii Climate Analysis API!<br/>Available Routes:<br/>/api/v1.0/precipitation<br/>/api/v1.0/stations<br/>/api/v1.0/tobs<br/>/api/v1.0/start (enter as YYYY-MM-DD)<br/>/api/v1.0/start/end (enter as YYYY-MM-DD/YYYY-MM-DD)

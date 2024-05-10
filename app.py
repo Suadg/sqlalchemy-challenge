@@ -59,7 +59,6 @@ def welcome():
         f"/api/v1.0/tobs<br/>"
         f"/api/v1.0/start (enter as YYYY-MM-DD)<br/>"
         f"/api/v1.0/start/end (enter as YYYY-MM-DD/YYYY-MM-DD)"
-
     )
 
 #2. /api/v1.0/precipitation
